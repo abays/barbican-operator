@@ -24,12 +24,6 @@ type BarbicanTemplate struct {
 	// DatabaseUser - optional username used for barbican DB, defaults to barbican
 	DatabaseUser string `json:"databaseUser"`
 
-	// +kubebuilder:validation:Required
-	// +kubebuilder:default=rabbitmq
-	// RabbitMQ instance name
-	// Needed to request a transportURL that is created and used in Barbican
-	RabbitMqClusterName string `json:"rabbitMqClusterName"`
-
 	// +kubebuilder:validation:Optional
 	// Secret containing SimpleCrypto KEK
 	SimpleCryptoBackendKEKSecret string `json:"simpleCryptoBackendKEKSecret,omitempty"`

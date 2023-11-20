@@ -65,6 +65,12 @@ type BarbicanSpec struct {
 	DefaultConfigOverwrite map[string]string `json:"defaultConfigOverwrite,omitempty"`
 
 	// +kubebuilder:validation:Required
+	// +kubebuilder:default=rabbitmq
+	// RabbitMQ instance name
+	// Needed to request a transportURL that is created and used in Barbican
+	RabbitMqClusterName string `json:"rabbitMqClusterName"`
+
+	// +kubebuilder:validation:Required
 	// BarbicanAPIInternal - Spec definition for the internal and admin API service of this Barbican deployment
 
 	BarbicanAPI BarbicanAPITemplate `json:"barbicanAPI"`

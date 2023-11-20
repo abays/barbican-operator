@@ -130,11 +130,6 @@ spec:
                       password from the Secret
                     type: string
                 type: object
-              rabbitMqClusterName:
-                default: rabbitmq
-                description: RabbitMQ instance name Needed to request a transportURL
-                  that is created and used in Barbican
-                type: string
               replicas:
                 default: 1
                 description: Replicas of Barbican API to run
@@ -211,7 +206,6 @@ spec:
             - containerImage
             - databaseHostname
             - databaseInstance
-            - rabbitMqClusterName
             - serviceAccount
             type: object
           status:
