@@ -210,7 +210,7 @@ func (r *BarbicanAPIReconciler) getSecret(
 				condition.RequestedReason,
 				condition.SeverityInfo,
 				condition.InputReadyWaitingMessage))
-			return ctrl.Result{RequeueAfter: time.Duration(10) * time.Second}, fmt.Errorf("secret %s not found", secretName)
+			return result, fmt.Errorf("OpenStack secret %s not found", secretName)
 		}
 		instance.Status.Conditions.Set(condition.FalseCondition(
 			condition.InputReadyCondition,
@@ -223,8 +223,7 @@ func (r *BarbicanAPIReconciler) getSecret(
 
 	// Add a prefix to the var name to avoid accidental collision with other non-secret
 	// vars. The secret names themselves will be unique.
-	(*envVars)["secret-"+secret.Name] = env.SetValue(hash)
-	// env[secret-osp-secret] = hash?
+	(*envVars)["secret-"+secretName] = env.SetValue(hash)
 
 	return ctrl.Result{}, nil
 }
